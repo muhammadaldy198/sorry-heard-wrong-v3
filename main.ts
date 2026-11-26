@@ -8,6 +8,7 @@ const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? ".";
 mkdirSync(outDir, { recursive: true });
 const target = join(outDir, "entry.txt");
 // entry.txt holds exactly one line: the submission pick, nothing else.
+// No trailing newline: the gate counts characters, so the file is the pick verbatim.
 writeFileSync(target, pick, "utf8");
 chmodSync(target, 0o644);
 console.log(`Wrote ${pick.length} chars to ${target}`);
